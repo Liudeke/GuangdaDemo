@@ -17,21 +17,29 @@ namespace _Scripts.UI.GraphWindow
 	    public List<Vector3> listOrigin;
         public override void OnInit()
         {
-           
+            _graph = GetGameObject("Graph1");
+            _graph1 = GetGameObject("Graph1 (1)");
+            _graph2 = GetGameObject("Graph1 (2)");
+            _graph3 = GetGameObject("Graph1 (3)");
+            _graph4 = GetGameObject("Graph1 (4)");
+            _graph5 = GetGameObject("Graph1 (5)");
+            _graph6 = GetGameObject("Graph1 (6)");
+            _graph7 = GetGameObject("Graph1 (7)");
+            PlayAnimation();
         }
 
 	    public GameObject obj;
 	    void Start()
 	    {
-	        _graph = obj;//GetGameObject("Graph1");
-            //_graph1 = GetGameObject("Graph1 (1)");
-            //_graph2 = GetGameObject("Graph1 (2)");
-            //_graph3 = GetGameObject("Graph1 (3)");
-            //_graph4 = GetGameObject("Graph1 (4)");
-            //_graph5 = GetGameObject("Graph1 (5)");
-            //_graph6 = GetGameObject("Graph1 (6)");
-            //_graph7 = GetGameObject("Graph1 (7)");
-            PlayAnimation();
+	        //_graph = obj;//GetGameObject("Graph1");
+         //   //_graph1 = GetGameObject("Graph1 (1)");
+         //   //_graph2 = GetGameObject("Graph1 (2)");
+         //   //_graph3 = GetGameObject("Graph1 (3)");
+         //   //_graph4 = GetGameObject("Graph1 (4)");
+         //   //_graph5 = GetGameObject("Graph1 (5)");
+         //   //_graph6 = GetGameObject("Graph1 (6)");
+         //   //_graph7 = GetGameObject("Graph1 (7)");
+         //   PlayAnimation();
         }
         public override void OnOpen()
 		{
