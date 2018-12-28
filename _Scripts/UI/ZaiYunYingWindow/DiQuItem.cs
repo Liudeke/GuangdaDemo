@@ -41,16 +41,11 @@ public class DiQuItem : ReusingScrollItemBase
     {
         GlobalEvent.DispatchEvent(ZaiYunYingWindowEvent.ShoWYunYingItem, ItemCreateControll.Instance.GetShilistFromSheng(listsrt[1]));
         GlobalEvent.DispatchEvent(ZaiYunYingWindowEvent.ShoWJianSheItem,ItemCreateControll.Instance.GetShilistFromSheng(listsrt[1]));
-        print(listsrt[1]);
     }
 
     private void Btn1_Event(InputUIOnClickEvent inputEvent)
     {
-        if (listtext[1])
-        {
-            print(listsrt[0]);
-            GlobalEvent.DispatchEvent(ZaiYunYingWindowEvent.ShoWJianSheItem, ItemCreateControll.Instance.GetShilistFromSheng(listsrt[0]));
-            GlobalEvent.DispatchEvent(ZaiYunYingWindowEvent.ShoWYunYingItem, ItemCreateControll.Instance.GetShilistFromSheng(listsrt[0]));
-        }
+        GlobalEvent.DispatchEvent(ZaiYunYingWindowEvent.ShoWJianSheItem, ItemCreateControll.Instance.GetShilistFromSheng(listsrt[0]));
+        GlobalEvent.DispatchEvent(ZaiYunYingWindowEvent.ShoWYunYingItem, ItemCreateControll.Instance.GetShilistFromSheng(listsrt[0]));
     }
 }

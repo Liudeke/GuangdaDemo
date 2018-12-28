@@ -26,7 +26,7 @@ public class test : UIBase
 
     private void OnMouseClickEvent(GameObject obj)
     {
-        print("点击");
+
         GlobalEvent.DispatchEvent(ZaiYunYingWindowEvent.UGUIMove, "5");
         GlobalEvent.DispatchEvent(ZaiYunYingWindowEvent.UGUIMove, "6");
         GlobalEvent.DispatchEvent(ZaiYunYingWindowEvent.UGUIMove, "3");

@@ -32,7 +32,7 @@ public class YunYingItem : ReusingScrollItemBase {
         object obj;
         if (data.TryGetValue("JianShe_list", out obj))
         {
-            Debug.Log("tempListTest===null");
+
             tempList = obj as List<string>;
             NameID = "JianShe_list";
         }

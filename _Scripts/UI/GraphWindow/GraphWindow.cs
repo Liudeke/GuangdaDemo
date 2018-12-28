@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,16 +37,32 @@ namespace _Scripts.UI.GraphWindow
             bezierTransform = uicamera.transform.GetChild(1); // GetRectTransform("bezer");
         }
 
-        public override void OnOpen()
+	    public override IEnumerator ExitAnim(UIAnimCallBack l_animComplete, UICallBack l_callBack, params object[] objs)
+	    {
+	        AnimSystem.UguiAlpha(gameObject, null, 0, callBack: (object[] obj) =>
+	        {
+	            StartCoroutine(base.ExitAnim(l_animComplete, l_callBack, objs));
+	        });
+            ErathPlayBezier();
+            PlayBackAnimation();
+            yield return new WaitForSeconds(1.3f);
+	    }
+
+	    public override IEnumerator EnterAnim(UIAnimCallBack l_animComplete, UICallBack l_callBack, params object[] objs)
+	    {
+	        PlayAnimation();
+            yield return new WaitForSeconds(0.5f);
+	    }
+
+	    public override void OnOpen()
 		{
 			AddOnClickListener("test",btn_Event);
-            PlayAnimation();
-		    ErathPlayBezier();
+		    //ErathPlayBezier();
 		}
 
 	    public override void OnHide()
 	    {
-            PlayBackAnimation();
+            //PlayBackAnimation();
 	    }
 
 	    void ErathPlayBezier()
@@ -68,33 +85,34 @@ namespace _Scripts.UI.GraphWindow
 
 	    private void btn_Event(InputUIOnClickEvent inputEvent)
         {
-            PlayBackAnimation();
-            
+            //PlayBackAnimation();
+            UIManager.CloseUIWindow(this);
+            UIManager.OpenUIWindow<ZaiYunYingWindow>();
         }
 
         void PlayAnimation()
 	    {
-	        AnimSystem.Move(_graph, from: _graph.transform.localPosition, to: listVector[0],delayTime:1, time: 1f, interp: InterpType.InOutBack);
-	        AnimSystem.Move(_graph1, from: _graph1.transform.localPosition, to: listVector[1], delayTime: 1, time: 1.2f, interp: InterpType.InOutBack);
-	        AnimSystem.Move(_graph2, from: _graph2.transform.localPosition, to: listVector[2], delayTime: 1, time: 1f, interp: InterpType.InOutBack);
-	        AnimSystem.Move(_graph3, from: _graph3.transform.localPosition, to: listVector[3], delayTime: 1, time: 1.2f, interp: InterpType.InOutBack);
-	        AnimSystem.Move(_graph4, from: _graph4.transform.localPosition, to: listVector[4], delayTime: 1, time: 1f, interp: InterpType.InOutBack);
-	        AnimSystem.Move(_graph5, from: _graph5.transform.localPosition, to: listVector[5], delayTime: 1, time: 1.2f, interp: InterpType.InOutBack);
-	        AnimSystem.Move(_graph6, from: _graph6.transform.localPosition, to: listVector[6], delayTime: 1, time: 1f, interp: InterpType.InOutBack);
-	        AnimSystem.Move(_graph7, from: _graph7.transform.localPosition, to: listVector[7], delayTime: 1, time: 1.2f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph, from: _graph.transform.localPosition, to: listVector[0], time: 1f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph1, from: _graph1.transform.localPosition, to: listVector[1],  time: 1.2f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph2, from: _graph2.transform.localPosition, to: listVector[2],  time: 1f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph3, from: _graph3.transform.localPosition, to: listVector[3],  time: 1.2f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph4, from: _graph4.transform.localPosition, to: listVector[4],  time: 1f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph5, from: _graph5.transform.localPosition, to: listVector[5],  time: 1.2f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph6, from: _graph6.transform.localPosition, to: listVector[6],  time: 1f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph7, from: _graph7.transform.localPosition, to: listVector[7],  time: 1.2f, interp: InterpType.InOutBack);
 
         }
 
 	    void PlayBackAnimation()
 	    {
-	        AnimSystem.Move(_graph, from: _graph.transform.localPosition, to: listOrigin[0],  time: 1f, interp: InterpType.InOutBack);
-	        AnimSystem.Move(_graph1, from: _graph1.transform.localPosition, to: listOrigin[0],  time: 1.2f, interp: InterpType.InOutBack);
-	        AnimSystem.Move(_graph2, from: _graph2.transform.localPosition, to: listOrigin[1],  time: 1f, interp: InterpType.InOutBack);
-	        AnimSystem.Move(_graph3, from: _graph3.transform.localPosition, to: listOrigin[1],  time: 1.2f, interp: InterpType.InOutBack);
-	        AnimSystem.Move(_graph4, from: _graph4.transform.localPosition, to: listOrigin[2],  time: 1f, interp: InterpType.InOutBack);
-	        AnimSystem.Move(_graph5, from: _graph5.transform.localPosition, to: listOrigin[2],  time: 1.2f, interp: InterpType.InOutBack);
-	        AnimSystem.Move(_graph6, from: _graph6.transform.localPosition, to: listOrigin[3], time: 1f, interp: InterpType.InOutBack);
-	        AnimSystem.Move(_graph7, from: _graph7.transform.localPosition, to: listOrigin[3],  time: 1.2f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph, from: _graph.transform.localPosition, to: listOrigin[0],  time: 0.6f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph1, from: _graph1.transform.localPosition, to: listOrigin[0],  time: 0.6f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph2, from: _graph2.transform.localPosition, to: listOrigin[1],  time: 0.6f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph3, from: _graph3.transform.localPosition, to: listOrigin[1],  time: 0.6f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph4, from: _graph4.transform.localPosition, to: listOrigin[2],  time: 0.6f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph5, from: _graph5.transform.localPosition, to: listOrigin[2],  time: 0.6f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph6, from: _graph6.transform.localPosition, to: listOrigin[3], time: 0.6f, interp: InterpType.InOutBack);
+	        AnimSystem.Move(_graph7, from: _graph7.transform.localPosition, to: listOrigin[3],  time: 0.6f, interp: InterpType.InOutBack);
         }
     }
 }

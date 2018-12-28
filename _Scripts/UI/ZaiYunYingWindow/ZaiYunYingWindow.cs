@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Assets._Scripts.Controll;
 using UnityEngine;
 using UnityEngine.UI;
@@ -69,7 +70,12 @@ public class ZaiYunYingWindow : UIWindowBase
         GlobalEvent.AddEvent(ZaiYunYingWindowEvent.ShoWDiQuItem, EnterShowDiQuItem);
         GlobalEvent.AddEvent(ZaiYunYingWindowEvent.UGUIMove, MoveUGUI);
         GlobalEvent.AddEvent(ZaiYunYingWindowEvent.SetIntroduceTex,SetIntroDuceText);
-       
+
+        ItemCreateControll.Instance.TestMothed2();
+        EnterShowYunYingItem(new[]
+            {ItemCreateControll.Instance.GetShilistFromSheng(ItemCreateControll.Instance.GetShengList()[0])});
+        EnterShowJanSheItem(new[]
+            {ItemCreateControll.Instance.GetShilistFromSheng(ItemCreateControll.Instance.GetShengList()[0])});
     }
 
     private void SetIntroDuceText(object[] args)
@@ -142,7 +148,7 @@ public class ZaiYunYingWindow : UIWindowBase
             Debug.LogWarning("==>tempYunYingListstr<==集合数量不对");
         }
 
-        print(lines + "---lines");
+
         GlobalEvent.DispatchEvent(ItemCreateControllEvent.PlayJianSheItemAni);
     }
 
@@ -199,5 +205,12 @@ public class ZaiYunYingWindow : UIWindowBase
         }
 
         return data;
+    }
+
+    public override IEnumerator EnterAnim(UIAnimCallBack l_animComplete, UICallBack l_callBack, params object[] objs)
+    {
+        GlobalEvent.DispatchEvent(ZaiYunYingWindowEvent.UGUIMove, "1");
+        GlobalEvent.DispatchEvent(ZaiYunYingWindowEvent.UGUIMove, "2");
+        yield return new WaitForSeconds(0.7f);
     }
 }

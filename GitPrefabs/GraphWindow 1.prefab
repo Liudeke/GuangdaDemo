@@ -4997,7 +4997,7 @@ GameObject:
   - component: {fileID: 114479493174373330}
   - component: {fileID: 114494084308922644}
   m_Layer: 5
-  m_Name: GraphWindow
+  m_Name: GraphWindow 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
