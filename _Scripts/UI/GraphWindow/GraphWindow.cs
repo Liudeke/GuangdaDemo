@@ -23,7 +23,7 @@ namespace _Scripts.UI.GraphWindow
         public override void OnInit()
         {
             GameObject uicamera= GameObject.FindGameObjectWithTag("UICamera");
-
+          
             _graph = GetGameObject("Graph1");
             _graph1 = GetGameObject("Graph1 (1)");
             _graph2 = GetGameObject("Graph1 (2)");
