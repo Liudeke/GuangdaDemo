@@ -24,10 +24,10 @@ public class RotaionSelf : MonoBehaviour
 
     //鼠标缩放控制部分
     //鼠标缩放距离最值
-    private float maxDistance = 10;
-    private float minDistance = 1.5f;
+    public float maxDistance = 10;
+    public float minDistance = 1.5f;
     //鼠标缩放速度
-    private float zoomSpeed = 2f;
+    public float zoomSpeed = 2f;
 
     //差值控制部分
     //是否启用差值计算
